@@ -12,16 +12,17 @@ WORKDIR /usr/share/filebeat
 RUN curl -Ls https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz | tar --strip-components=1 -zxf - && \
     ln -s /usr/share/filebeat /opt/filebeat
 
-COPY docker-entrypoint.sh /
+ADD docker-entrypoint.sh /usr/local/bin
 
 RUN groupadd --gid 1000 filebeat && \
     useradd --uid 1000 --gid 1000 \
       --home-dir /usr/share/filebeat --no-create-home \
       filebeat
-RUN chmod +x /docker-entrypoint.sh
 
-ENTRYPOINT [ "/docker-entrypoint.sh" ]
+WORKDIR /usr/share/filebeat
+
+ENTRYPOINT [ "/usr/share/local/bin/docker-entrypoint.sh" ]
 
 USER filebeat
 
-CMD [ "filebeat", "-e" ]
+CMD [ "-e" ]
