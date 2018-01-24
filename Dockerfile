@@ -14,7 +14,7 @@ RUN curl -Ls https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${FI
 
 COPY docker-entrypoint.sh /usr/local/bin
 
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/share/filebeat/bin/docker-entrypoint.sh
 
 RUN groupadd --gid 1000 filebeat && \
     useradd --uid 1000 --gid 1000 \
@@ -23,7 +23,7 @@ RUN groupadd --gid 1000 filebeat && \
 
 WORKDIR /usr/share/filebeat
 
-ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]
+ENTRYPOINT [ "/usr/share/filebeat/bin/docker-entrypoint.sh" ]
 
 USER filebeat
 
