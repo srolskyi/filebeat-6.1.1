@@ -14,6 +14,8 @@ RUN curl -Ls https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${FI
 
 COPY docker-entrypoint.sh /usr/local/bin
 
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 RUN groupadd --gid 1000 filebeat && \
     useradd --uid 1000 --gid 1000 \
       --home-dir /usr/share/filebeat --no-create-home \
