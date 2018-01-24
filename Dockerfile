@@ -21,7 +21,7 @@ RUN groupadd --gid 1000 filebeat && \
 
 WORKDIR /usr/share/filebeat
 
-ENTRYPOINT [ "/usr/share/local/bin/docker-entrypoint.sh" ]
+ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]
 
 USER filebeat
 
