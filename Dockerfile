@@ -12,7 +12,7 @@ WORKDIR /usr/share/filebeat
 RUN curl -Ls https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz | tar --strip-components=1 -zxf - && \
     ln -s /usr/share/filebeat /opt/filebeat
 
-COPY docker-entrypoint.sh /usr/local/bin
+COPY docker-entrypoint.sh /usr/share/filebeat/bin/
 
 RUN chmod +x /usr/share/filebeat/bin/docker-entrypoint.sh
 
