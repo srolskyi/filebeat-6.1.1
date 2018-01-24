@@ -24,4 +24,4 @@ ENTRYPOINT [ "/docker-entrypoint.sh" ]
 
 USER filebeat
 
-CMD [ "/usr/share/filebeat/bin/filebeat", "-e" ]
+CMD [ "filebeat", "-e" ]
