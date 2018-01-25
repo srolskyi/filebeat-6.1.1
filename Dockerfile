@@ -35,4 +35,4 @@ USER filebeat
 ENTRYPOINT [ "/usr/local/bin/docker-entrypoint" ]
 
 
-CMD [ "-e", "-c", "${FILEBEAT_HOME}/filebeat.yml" ]
+CMD [ "-e", "-c", "/ush/share/filebeat/filebeat.yml" ]
