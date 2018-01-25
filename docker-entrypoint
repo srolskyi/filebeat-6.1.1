@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if [[ -z $1 ]] || [[ ${1:0:1} == '-' ]] ; then
+  exec filebeat "$@"
+else
+  subcommands=$(filebeat help \
+                  | awk 'BEGIN {RS=""; FS="\n"} /Available Commands:/' \
+                  | awk '/^\s+/ {print $1}')
+
+  for subcommand in $subcommands; do
+      if [[ $1 == $subcommand ]]; then
+        exec filebeat "$@"
+      fi
+  done
+fi
+
+exec "$@"
